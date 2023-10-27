@@ -146,6 +146,9 @@ spec:
             {{- end }}
             {{- end }}
           {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.scheduler.containerPorts.http }}
           {{- if not .Values.diagnosticMode.enabled }}
           {{- if .Values.scheduler.customLivenessProbe }}
           livenessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.scheduler.customLivenessProbe "context" $) | trim | nindent 12 }}
